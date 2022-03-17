@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import {ToastContainer, toast} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+import logo from './logo.png';
 import './App.css';
 
 function App() {
+
+  useEffect(() => {
+    toast.success("Welcome!!!");
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-body">
+        <img style={{marginTop: "50px"}} src={logo} className="App-logo" alt="logo" />
+        <h5>Made By: <a href="https://www.linkedin.com/in/netanmangal" target="_blank" rel="noreferrer noopener">Netan Mangal</a></h5>
+
+        <ToastContainer style={{fontSize: "1rem", width: "30rem"}} position="top-right" theme="dark" autoClose={3000} />
+      </div>
     </div>
   );
 }
