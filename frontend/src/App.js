@@ -20,28 +20,26 @@ function App() {
     toast.success("Welcome!!!");
 
     const init = async () => {
+      const _tokenName = await contract.methods.name().call();
+      const _tokenSymbol = await contract.methods.symbol().call();
+      const _accounts = await web3.eth.getAccounts();
       setState({
         ...state,
-        tokenName: await contract.methods.name().call(),
-        tokenSymbol: await contract.methods.symbol().call(),
-        accounts: await web3.eth.getAccounts()
+        tokenName: _tokenName,
+        tokenSymbol: _tokenSymbol,
+        accounts: _accounts,
+        isMetamaskInstalled: true
       });
-
-      console.log(state);
     }
     
     const checkMetamask = async () => {
       if (typeof web3 !== 'undefined') {
         if (web3?.currentProvider?.isMetaMask === true) {
-          setState({
-            ...state,
-            isMetamaskInstalled: true
-          });
-          init();
-
           if (state.accounts.length === 0) {
             await window.ethereum.enable();
           }
+
+          init();
         } else {
           toast.error("Kindly install metamask!!! - 1");
         }
@@ -58,6 +56,8 @@ function App() {
       <div className="App-body">
         <img style={{marginTop: "50px"}} src={logo} className="App-logo" alt="logo" />
         <h5>Made By: <a href="https://www.linkedin.com/in/netanmangal" target="_blank" rel="noreferrer noopener">Netan Mangal</a></h5>
+
+        <Body state={state} contract={contract} />
 
         <ToastContainer style={{fontSize: "1rem", width: "30rem"}} position="top-right" theme="dark" autoClose={3000} />
       </div>
