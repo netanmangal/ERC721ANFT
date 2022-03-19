@@ -9,6 +9,7 @@ import "./utils/AccessControl.sol";
 contract NFTContract is ERC721A, AccessControl {
     uint256 public mintingAllowedAfter;
     uint256 public maxPurchase = 20;
+    uint256 public totalTokens = 200;
 
     constructor (string memory name_, string memory symbol_, uint256 mintingAllowedAfter_)
     ERC721A(name_, symbol_) {
@@ -33,6 +34,7 @@ contract NFTContract is ERC721A, AccessControl {
                 )
             )
         );
+        require(totalSupply() + quantity <= totalTokens, "NFTContract Error: Cannot mint these many tokens.");
         _safeMint(msg.sender, quantity);
     }
 
@@ -41,6 +43,7 @@ contract NFTContract is ERC721A, AccessControl {
     }
 
     function reserveTokens(uint256 quantity_) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        require(totalSupply() + quantity_ <= totalTokens, "NFTContract Error: Cannot mint these many tokens.");
         _safeMint(msg.sender, quantity_);
     }
 }
