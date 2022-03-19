@@ -13,7 +13,7 @@ contract NFTContract is ERC721A, AccessControl {
     constructor (string memory name_, string memory symbol_, uint256 mintingAllowedAfter_)
     ERC721A(name_, symbol_) {
         _grantRole(DEFAULT_ADMIN_ROLE, _msgSender());
-        mintingAllowedAfter = block.timestamp + mintingAllowedAfter_;
+        mintingAllowedAfter = mintingAllowedAfter_;
     }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(ERC721A, AccessControl) returns (bool) {
