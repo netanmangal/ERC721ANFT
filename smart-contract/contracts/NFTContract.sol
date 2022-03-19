@@ -35,4 +35,8 @@ contract NFTContract is ERC721A, AccessControl {
         );
         _safeMint(msg.sender, quantity);
     }
+
+    function setReleaseTime(uint256 mintingAllowedAfter_) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        mintingAllowedAfter = mintingAllowedAfter_;
+    }
 }
