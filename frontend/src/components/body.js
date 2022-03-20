@@ -14,6 +14,13 @@ function Body ({state, contract, setState, toast}) {
                 <h2>ERC721 Token Details</h2>
                 <p>Name: {state.tokenName}</p>
                 <p>Symbol: {state.tokenSymbol}</p>
+                
+                <br />
+
+                <p>Max Suppky of NFTs: {state.totalTokens}</p>
+                <p>NFTs available: {state.totalTokens - state.totalSupplied}</p>
+                <p>Miniting of tokens allowed after: {new Date(state.mintingAllowedAfter * 1000).toISOString()}</p>
+
 
                 <br />
                 <br />

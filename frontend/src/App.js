@@ -14,6 +14,9 @@ function App() {
     accounts: [],
     tokenName: "",
     tokenSymbol: "",
+    totalTokens: 0,
+    totalSupplied: 0,
+    mintingAllowedAfter: 0,
     mintNFTs: 0
   });
 
@@ -21,16 +24,24 @@ function App() {
     toast.success("Welcome!!!");
 
     const init = async () => {
+      const _accounts = await web3.eth.getAccounts();
       const _tokenName = await contract.methods.name().call();
       const _tokenSymbol = await contract.methods.symbol().call();
-      const _accounts = await web3.eth.getAccounts();
+      const _totalTokens = await contract.methods.totalTokens().call();
+      const _totalSupplied = await contract.methods.totalSupply().call();
+      const _mintingAllowedAfter = await contract.methods.mintingAllowedAfter().call();
       setState({
         ...state,
+        isMetamaskInstalled: true,
+        accounts: _accounts,
         tokenName: _tokenName,
         tokenSymbol: _tokenSymbol,
-        accounts: _accounts,
-        isMetamaskInstalled: true
+        totalTokens: parseInt(_totalTokens),
+        totalSupplied: parseInt(_totalSupplied),
+        mintingAllowedAfter: parseInt(_mintingAllowedAfter)
       });
+
+      console.log(state);
     }
     
     const checkMetamask = async () => {
