@@ -1,4 +1,4 @@
-exports.handleMint = async (event, toast, contract, state) => {
+export const handleMint = async (event, toast, contract, state) => {
     event.preventDefault();
     toast("Minting in process...", {
         autoClose: 12000
@@ -17,7 +17,7 @@ exports.handleMint = async (event, toast, contract, state) => {
     
 }
 
-exports.handleReserveTokens = async (event, toast, contract, state) => {
+export const handleReserveTokens = async (event, toast, contract, state) => {
     event.preventDefault();
     toast("Transaction in process...", {
         autoClose: 12000
@@ -35,7 +35,7 @@ exports.handleReserveTokens = async (event, toast, contract, state) => {
     }
 }
 
-exports.handleSetReleaseTime = async (event, toast, contract, state) => {
+export const handleSetReleaseTime = async (event, toast, contract, state) => {
     event.preventDefault();
     toast("Transaction in process...", {
         autoClose: 12000
