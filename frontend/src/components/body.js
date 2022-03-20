@@ -6,8 +6,6 @@ function Body ({state, contract, setState, toast}) {
             <div style={{paddingBottom: "50px"}}>
                 <p>You are connected via address: <b>{state.accounts[0]}</b></p>
                 <p>Contract address: <b>{contract.options.address}</b></p>
-                <p>Chain: <b>BSC - Testnet</b></p>
-
 
                 <br />
 
@@ -55,7 +53,8 @@ function Body ({state, contract, setState, toast}) {
 
     return (
         <div>
-
+            <h2>Install metamask</h2>
+            <a href="https://netanmangal.me/posts/introducing-metamask/" target="_blank" rel="noreferrer noopener">How to install Metamask.</a>
         </div>
     );
 }

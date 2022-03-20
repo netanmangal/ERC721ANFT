@@ -69,6 +69,8 @@ function App() {
         <img style={{marginTop: "50px"}} src={logo} className="App-logo" alt="logo" />
         <h5>Made By: <a href="https://www.linkedin.com/in/netanmangal" target="_blank" rel="noreferrer noopener">Netan Mangal</a></h5>
 
+        <h6>Use Chain: <b>BSC - Testnet</b></h6>
+
         <Body state={state} contract={contract} setState={setState} toast={toast} />
 
         <ToastContainer style={{fontSize: "1rem", width: "30rem"}} position="top-right" theme="dark" autoClose={3000} />
