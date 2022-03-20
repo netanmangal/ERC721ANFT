@@ -3,12 +3,18 @@ exports.handleMint = async (event, toast, contract, state) => {
     toast("Minting in process...", {
         autoClose: 12000
     });
-    
-    const response = await contract.methods.mint(state.mintNFTs)
-        .send({from: state.accounts[0], gas: 1000000});
-    console.log(response);
 
-    toast.success("Txn completed");
+    try {
+        const response = await contract.methods.mint(state.mintNFTs)
+            .send({from: state.accounts[0], gas: 1000000});
+        console.log(response);
+    
+        toast.success("Txn completed");
+    } catch (e) {
+        console.log(e.message);
+        toast.error("Error occured");
+    }
+    
 }
 
 exports.handleReserveTokens = async (event, toast, contract, state) => {
@@ -17,11 +23,16 @@ exports.handleReserveTokens = async (event, toast, contract, state) => {
         autoClose: 12000
     });
     
-    const response = await contract.methods.reserveTokens(state.reserveNFTs)
-        .send({from: state.accounts[0], gas: 1000000});
-    console.log(response);
-
-    toast.success("Txn completed");
+    try {
+        const response = await contract.methods.reserveTokens(state.reserveNFTs)
+            .send({from: state.accounts[0], gas: 1000000});
+        console.log(response);
+    
+        toast.success("Txn completed");
+    } catch (e) {
+        console.log(e.message);
+        toast.error("Error occured");
+    }
 }
 
 exports.handleSetReleaseTime = async (event, toast, contract, state) => {
@@ -29,10 +40,16 @@ exports.handleSetReleaseTime = async (event, toast, contract, state) => {
     toast("Transaction in process...", {
         autoClose: 12000
     });
+    
+    try {
+        const response = await contract.methods.setReleaseTime(state.releaseTime)
+            .send({from: state.accounts[0], gas: 1000000});
+        console.log(response);
+    
+        toast.success("Txn completed");
+    } catch (e) {
+        console.log(e.message);
+        toast.error("Error occured");
+    }
 
-    const response = await contract.methods.setReleaseTime(state.releaseTime)
-        .send({from: state.accounts[0], gas: 1000000});
-    console.log(response);
-
-    toast.success("Txn completed");
 }
