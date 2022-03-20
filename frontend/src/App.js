@@ -17,7 +17,9 @@ function App() {
     totalTokens: 0,
     totalSupplied: 0,
     mintingAllowedAfter: 0,
-    mintNFTs: 0
+    mintNFTs: 0,
+    reserveNFTs: 0,
+    releaseTime: 0
   });
 
   useEffect(() => {
@@ -40,8 +42,6 @@ function App() {
         totalSupplied: parseInt(_totalSupplied),
         mintingAllowedAfter: parseInt(_mintingAllowedAfter)
       });
-
-      console.log(state);
     }
     
     const checkMetamask = async () => {
